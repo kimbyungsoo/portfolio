@@ -32,5 +32,5 @@ router.get('/get', function(req, res, next) {
 	}, (error) => {
 		return res.status(404).json({error: error});
 	});
-};
+});
 module.exports = router;
