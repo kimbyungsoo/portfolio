@@ -1,42 +1,27 @@
 var express = require('express');
 var router = express.Router();
+var Parse = require('parse/node');
 
-const mongoose = require('mongoose');
-mongoose.connect('mongodb://heroku_v2gqnhzb:botkmolrsh0vv55hqk3eo1k5kj@ds127771.mlab.com:27771/heroku_v2gqnhzb');
-let db = mongoose.connection;
-db.on('error', function (e){
-	console.error(e);
-});
-db.once('open', function(){
-	console.log('connected');
-})
-
-let Schema = mongoose.Schema;
-let testSchema = new Schema({
-	contents : String,
-	meta : {
-		titl : String,
-		count : Number
-	}
-});
-
-let a = mongoose.model('test', testSchema);
-
+const APP_ID = process.env.APP_ID;
+const JAVASCRIPT_KEY = process.env.JAVASCRIPT_KEY;
+const SERVER_URL = 'https://kimbyungsoo.herokuapp.com/parse'
 
 
 router.get('/', function(req, res, next) {
-	let aobject = new a();
-	aobject.meta.titl = "test";
-	aobject.meta.count = 5;
+	Parse.initialize(APP_ID, JAVASCRIPT_KEY);
+	Parse.serverURL = SERVER_URL
+	const Contents= Parse.Object.extend("contents");
+	const content = new Contents();
 
-	aobject.save(function(err){
-		if(err){
-			res.render('index', { title: 'Error', name: 'Error page' });
-		}else{
-			res.render('index', { title: 'Express', name: 'KBS' });
-		}
+	content.set("title", title);
+	content.set("content", content);
+
+	content.save()
+		.then((content) => {
+ 			return res.json(result);
+		}, (error) => {
+ 			return res.status(404).json({error: "매개변수를 확인해 주세요."});
+		});
 	});
-	res.render('index', { title: 'Express', name: 'KBS' });
-});
 
 module.exports = router;
