@@ -13,8 +13,8 @@ router.get('/', function(req, res, next) {
 	const Contents= Parse.Object.extend("contents");
 	const content = new Contents();
 
-	content.set("title", title);
-	content.set("content", content);
+	content.set("title", req.query.title);
+	content.set("content", req.query.content);
 
 	content.save()
 		.then((content) => {
