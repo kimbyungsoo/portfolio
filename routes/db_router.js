@@ -33,4 +33,30 @@ router.get('/get', function(req, res, next) {
 		return res.status(404).json({error: error});
 	});
 });
+
+router.get('/count', function(req, res, next) {
+	let Contents = Parse.Object.extend("contents");
+	let query = new Parse.Query(Contents);
+	query.equalTo("title", "title");
+	const count = await  await query.count();
+	
+	return res.json(count : count); 
+});
+
+router.get('/first', function(req, res, next) {
+	let Contents = Parse.Object.extend("contents");
+	let query = new Parse.Query(Contents);
+	const object = await query.first();
+	
+	return res.json(object); 
+});
+
+router.get('/finnd', function(req, res, next) {
+	let Contents = Parse.Object.extend("contents");
+	let query = new Parse.Query(Contents);
+	const results = await query.find();;
+
+	return res.json(results); 
+});
+
 module.exports = router;
