@@ -25,6 +25,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/db', dbRouter);
 app.use('/users', usersRouter);
+app.use("/parse", parseConfig.ParseServer());
+app.use("/dashboard", parseConfig.Dashboard());
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -41,8 +43,5 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
-app.use("/parse", parseConfig.ParseServer());
-app.use("/dashboard", parseConfig.Dashboard());
 
 module.exports = app;
