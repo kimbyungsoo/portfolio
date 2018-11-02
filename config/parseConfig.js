@@ -34,7 +34,7 @@ exports.Dashboard = function () {
                 "appId": APP_ID,
                 "masterKey": MASTER_KEY,
                 "appName": APP_NAME
-            }
+            },
             {
                "serverURL": SERVER_URL2,
                 "appId": APP_ID2,
@@ -47,7 +47,7 @@ exports.Dashboard = function () {
                 "apps": [{"appId": APP_ID}],
                 "user": process.env.DASHBOARD_ID,
                 "pass": process.env.DASHBOARD_PW
-            }
+            },
             {
                 "apps": [{"appId": APP_ID2}],
                 "user": process.env.DASHBOARD_ID2,
