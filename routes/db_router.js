@@ -22,6 +22,15 @@ router.get('/', function(req, res, next) {
 		}, (error) => {
  			return res.status(404).json({error: "매개변수를 확인해 주세요."});
 		});
+});
+router.get('/get', function(req, res, next) {
+	let Contents= Parse.Object.extend("contents");
+	let query = new Parse.Query(Contents);
+	query.get("mrkxSHzup6")
+	.then((content) => {
+		return res.json(content);
+	}, (error) => {
+		return res.status(404).json({error: error});
 	});
-
+};
 module.exports = router;
