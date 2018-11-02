@@ -38,25 +38,25 @@ router.get('/count', function(req, res, next) {
 	let Contents = Parse.Object.extend("contents");
 	let query = new Parse.Query(Contents);
 	query.equalTo("title", "title");
-	const count = await query.count();
-	
-	return res.json({count : count}); 
+	query.find().then(function(results) {
+ 		return res.json(results); 
+	});
 });
 
 router.get('/first', function(req, res, next) {
 	let Contents = Parse.Object.extend("contents");
 	let query = new Parse.Query(Contents);
-	const object = await query.first();
-	
-	return res.json(object); 
+	query.find().then(function(results) {
+ 		return res.json(results); 
+	});
 });
 
 router.get('/finnd', function(req, res, next) {
 	let Contents = Parse.Object.extend("contents");
 	let query = new Parse.Query(Contents);
-	const results = await query.find();;
-
-	return res.json(results); 
+	query.find().then(function(results) {
+ 		return res.json(results); 
+	});
 });
 
 module.exports = router;
