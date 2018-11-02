@@ -38,9 +38,9 @@ router.get('/count', function(req, res, next) {
 	let Contents = Parse.Object.extend("contents");
 	let query = new Parse.Query(Contents);
 	query.equalTo("title", "title");
-	const count = await  await query.count();
+	const count = await query.count();
 	
-	return res.json(count : count); 
+	return res.json({count : count}); 
 });
 
 router.get('/first', function(req, res, next) {
