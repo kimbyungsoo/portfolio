@@ -9,6 +9,8 @@ var dbRouter = require('./routes/db_router');
 var usersRouter = require('./routes/users');
 
 var app = express();
+var parseConfig = require('./config/parseConfig');
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -39,5 +41,8 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+app.use("/parse", parseConfig.ParseServer());
+app.use("/dashboard", parseConfig.Dashboard());
 
 module.exports = app;
