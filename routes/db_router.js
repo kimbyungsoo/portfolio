@@ -18,7 +18,7 @@ router.get('/', function(req, res, next) {
 
 	content.save()
 		.then((content) => {
- 			return res.json(result);
+ 			return res.json(content);
 		}, (error) => {
  			return res.status(404).json({error: "매개변수를 확인해 주세요."});
 		});
