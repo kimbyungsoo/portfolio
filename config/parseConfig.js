@@ -10,10 +10,10 @@ const FILE_KEY = process.env.FILE_KEY;
 const MASTER_KEY = process.env.MASTER_KEY;
 const ALLOW_INSECURE_HTTP = true;
 
-const DB_URL = process.env.MONGODB_URI2;
-const SERVER_URL = process.env.SERVER_URL2;
- const MASTER_KEY = process.env.MASTER_KEY2;
- const APP_ID = process.env.APP_ID2;
+const DB_URL2 = process.env.MONGODB_URI2;
+const SERVER_URL2 = process.env.SERVER_URL2;
+const MASTER_KEY2 = process.env.MASTER_KEY2;
+const APP_ID2 = process.env.APP_ID2;
 /** ================== PARSE SERVER & DASHBOARD ================== **/
 exports.ParseServer = function () {
     return new parseServer({
