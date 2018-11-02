@@ -31,12 +31,23 @@ exports.Dashboard = function () {
                 "masterKey": MASTER_KEY,
                 "appName": APP_NAME
             }
+            {
+               "serverURL": SERVER_URL2,
+                "appId": APP_ID2,
+                "masterKey": MASTER_KEY2,
+                "appName": APP_NAME 
+            }
         ],
         "users": [
             {
                 "apps": [{"appId": APP_ID}],
                 "user": process.env.DASHBOARD_ID,
                 "pass": process.env.DASHBOARD_PW
+            }
+            {
+                "apps": [{"appId": APP_ID2}],
+                "user": process.env.DASHBOARD_ID2,
+                "pass": process.env.DASHBOARD_PW2
             }
         ],
         "trustProxy": 1
